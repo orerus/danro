@@ -1,8 +1,9 @@
 #!/bin/sh
-echo `date` > toDeploy.txt
+mkdir docs
+echo `date` > docs/toDeploy.txt
 echo '=================== Prepare ==================='
 GITHUB_DEPLOY_REPOSITORY=${GITHUB_REMOTE_REPOSITORY:-$GITHUB_REPOSITORY}
-GITHUB_DEPLOY_BRANCH=${GITHUB_BRANCH:-"gh-pages"}
+GITHUB_DEPLOY_BRANCH=${GITHUB_BRANCH:-"master"}
 echo '=================== Create deploy key to push ==================='
 mkdir ~/.ssh
 ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts && \
@@ -17,7 +18,7 @@ git remote add deploy $remote_repo && \
 git checkout $remote_branch || git checkout --orphan $remote_branch && \
 git config user.name "${GITHUB_ACTOR}" && \
 git config user.email "${GITHUB_ACTOR}@users.noreply.github.com" && \
-git add toDeploy.txt && \
+git add docs && \
 echo -n 'Files to Commit:' && ls -l | wc -l && \
 timestamp=$(date +%s%3N) && \
 git commit -m "Automated deployment to GitHub Pages on $timestamp" > /dev/null 2>&1 && \
