@@ -13,5 +13,5 @@ jobs:
               with:
                   java-version: 1.8
             - name: Build with Gradle
-              run: sh "bash ./test.sh"
+              run: sh ./test.sh
               #run: ./gradlew build
