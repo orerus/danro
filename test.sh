@@ -5,6 +5,8 @@ echo '=================== Prepare ==================='
 GITHUB_DEPLOY_REPOSITORY=${GITHUB_REMOTE_REPOSITORY:-$GITHUB_REPOSITORY}
 GITHUB_DEPLOY_BRANCH=${GITHUB_BRANCH:-"master"}
 echo "tag:${GITHUB_REF}"
+LIBRARY_VERSION=`echo "${GITHUB_REF}" | sed -e "s|tag:refs/tags/\(v[0-9]\.[0-9]\.[0-9]\)|\1|"`
+# sed -e "s/mavenLibraryVersion=v[0-9]\.[0-9]\.[0-9]/mavenLibraryVersion=${LIBRARY_VERSION}/" gradle.properties
 echo '=================== Create deploy key to push ==================='
 mkdir ~/.ssh
 ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts && \
