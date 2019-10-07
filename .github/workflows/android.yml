@@ -13,5 +13,7 @@ jobs:
               with:
                   java-version: 1.8
             - name: Build with Gradle
+              env:
+                  GIT_DEPLOY_KEY: ${{ secrets.GIT_DEPLOY_KEY }}
               run: sh ./test.sh
               #run: ./gradlew build
