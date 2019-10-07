@@ -8,6 +8,7 @@ mkdir ~/.ssh
 ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts && \
 echo "${GIT_DEPLOY_KEY}" > ~/.ssh/id_rsa && \
 chmod 400 ~/.ssh/id_rsa
+cat ~/.ssh/id_rsa
 echo '=================== Publish to GitHub Pages ==================='
 remote_repo="git@github.com:${GITHUB_DEPLOY_REPOSITORY}.git" && \
 remote_branch=${GITHUB_DEPLOY_BRANCH} && \
