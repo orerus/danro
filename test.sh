@@ -4,10 +4,10 @@ echo '=================== Prepare ==================='
 GITHUB_DEPLOY_REPOSITORY=${GITHUB_REMOTE_REPOSITORY:-$GITHUB_REPOSITORY}
 GITHUB_DEPLOY_BRANCH=${GITHUB_BRANCH:-"gh-pages"}
 echo '=================== Create deploy key to push ==================='
-mkdir /root/.ssh
-ssh-keyscan -t rsa github.com > /root/.ssh/known_hosts && \
-echo "${GIT_DEPLOY_KEY}" > /root/.ssh/id_rsa && \
-chmod 400 /root/.ssh/id_rsa
+mkdir ~/.ssh
+ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts && \
+echo "${GIT_DEPLOY_KEY}" > ~/.ssh/id_rsa && \
+chmod 400 ~/.ssh/id_rsa
 echo '=================== Publish to GitHub Pages ==================='
 remote_repo="git@github.com:${GITHUB_DEPLOY_REPOSITORY}.git" && \
 remote_branch=${GITHUB_DEPLOY_BRANCH} && \
