@@ -4,6 +4,7 @@ echo `date` > docs/index.html
 echo '=================== Prepare ==================='
 GITHUB_DEPLOY_REPOSITORY=${GITHUB_REMOTE_REPOSITORY:-$GITHUB_REPOSITORY}
 GITHUB_DEPLOY_BRANCH=${GITHUB_BRANCH:-"master"}
+echo "tag:${GITHUB_REF}"
 echo '=================== Create deploy key to push ==================='
 mkdir ~/.ssh
 ssh-keyscan -t rsa github.com > ~/.ssh/known_hosts && \
