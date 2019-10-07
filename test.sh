@@ -1,6 +1,6 @@
 #!/bin/sh
 mkdir docs
-echo `date` > docs/toDeploy.txt
+echo `date` > docs/index.html
 echo '=================== Prepare ==================='
 GITHUB_DEPLOY_REPOSITORY=${GITHUB_REMOTE_REPOSITORY:-$GITHUB_REPOSITORY}
 GITHUB_DEPLOY_BRANCH=${GITHUB_BRANCH:-"master"}
