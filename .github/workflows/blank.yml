@@ -6,7 +6,7 @@ name: CI
 # events but only for the master branch
 on: [pull_request_review_comment]
 #  pull_request_review_comment:
-#    types: [created, deleted]
+#    types: [created, deleted] henkou
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -17,13 +17,13 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: khan/pull-request-comment-trigger@master
-        id: check
-        with:
-          trigger: '@deploy'
-          reaction: rocket
-        env:
-          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
+#      - uses: khan/pull-request-comment-trigger@master
+#        id: check
+#        with:
+#          trigger: '@deploy'
+#          reaction: rocket
+#        env:
+#          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
       - run: 'echo Found it!'
         if: steps.check.outputs.triggered == 'true'
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
