@@ -1,9 +1,14 @@
-name: BITRISE_BUILD_WITH_REVIEW_COMMENT
 # This is a basic workflow to help you get started with Actions
 
-# Controls when the action will run. Triggers the workflow on push or pull request 
+name: Linter
+
+# Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on: [push, pull_request]
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -14,5 +19,9 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Super-Linter
-        uses: github/super-linter@v3.3.0
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    - name: Super-Linter
+      uses: github/super-linter@v3.3.0
+
